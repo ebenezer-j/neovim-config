@@ -9,12 +9,12 @@
 :set smartindent
 :set expandtab 
 :set nocompatible
-:set guifont=Fira\ Code\ Regular\ 11
+let &guifont = 'FiraCode Nerd Font'
 :set noswapfile
 :set nobackup
 :syntax on
 :set nocompatible
-:set encoding=utf-8
+:set encoding=UTF-8
 :filetype plugin on
 :filetype indent on
 :syntax enable
@@ -32,22 +32,24 @@ endif
 
 call plug#begin()
 
+" Vim Configuration
+Plug 'onsails/lspkind-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'windwp/nvim-autopairs'
 Plug 'tpope/vim-surround' " Surrounding ysw)
+" Plug 'hrsh7th/cmp-nvim-lsp'
 
 " NerdTree
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" Commenting gcc & gc
+" Commenting gcc & ge
 Plug 'tpope/vim-commentary'
 
 "Status Bar - Airline
 Plug 'vim-airline/vim-airline'
 
 " Color Preview
-Plug 'ap/vim-css-color' "
+Plug 'ap/vim-css-color'
 
 " ColorScheme
 Plug 'rafi/awesome-vim-colorschemes' " Retro Scheme
@@ -57,22 +59,34 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Icons
 Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
 
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'preservim/tagbar' " Tagbar for code navigation
 Plug 'lambdalisue/suda.vim/' " Sudo
 Plug 'tribela/vim-transparent'
 Plug 'alvan/vim-closetag'
 Plug 'mbbill/undotree' " Undo Mapper 
 
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install --frozen-lockfile --production',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }"Prettier
+Plug 'windwp/nvim-autopairs'
+Plug 'windwp/nvim-ts-autotag'
+
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'MunifTanjim/prettier.nvim'
+
+" Plug 'prettier/vim-prettier', {
+"   \ 'do': 'yarn install --frozen-lockfile --production',
+"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }"Prettier
 
 " Vim Terminal
 Plug 'tc50cal/vim-terminal' 
 
 " Flutter
-Plug 'thosakwe/vim-flutter'
+" Plug 'thosakwe/vim-flutter'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -88,18 +102,17 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'natebosch/dartlang-snippets'
 
+
 call plug#end()
 
 :set background=dark
-:colorscheme sonokai
-
+:colorscheme gruvbox
 lua << EOF
-  require("zen-mode").setup {}
   require("nvim-autopairs").setup {}
+  require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules","build","*.log"} } }
 EOF
 
 autocmd FocusLost * silent! wa
-
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 
@@ -114,5 +127,7 @@ let g:prettier#autoformat_require_pragma = 0
 :source ~/.config/nvim/tabs.vim
 :source ~/.config/nvim/plugged/vim-lsc.vim
 :source ~/.config/nvim/plugged/vim-indent-guide.vim
+:source ~/.config/nvim/plugged/telescope.vim
 
 let g:python_host_prog="/usr/bin/python3"
+

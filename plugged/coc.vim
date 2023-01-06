@@ -20,10 +20,19 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
 "coc config
 let g:coc_global_extensions = [
   \ 'coc-snippets',
-  \ 'coc-flutter',
+  \ 'coc-tsserver',
+  \ 'coc-emmet',
+  \ 'coc-highlight',
+  \ 'coc-pairs',
+  \ 'coc-spell-checker',
+  \ 'coc-html',
+  \ 'coc-css',
+  \ 'coc-json',
+  \ 'coc-eslint'
   \ ]
 
 
