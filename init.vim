@@ -47,6 +47,7 @@ Plug 'tpope/vim-commentary'
 
 "Status Bar - Airline
 Plug 'vim-airline/vim-airline'
+Plug 'enricobacis/vim-airline-clock'
 
 " Color Preview
 Plug 'ap/vim-css-color'
@@ -107,14 +108,17 @@ call plug#end()
 
 :set background=dark
 :colorscheme gruvbox
+
 lua << EOF
   require("nvim-autopairs").setup {}
   require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules","build","*.log"} } }
 EOF
 
 autocmd FocusLost * silent! wa
+
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
+let g:airline_section_b = '%{strftime("Time: %H:%M:%S")}'
 
 :source ~/.config/nvim/plugged/coc.vim
 :source ~/.config/nvim/plugged/nerdtree.vim
