@@ -38,6 +38,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-surround' " Surrounding ysw)
 " Plug 'hrsh7th/cmp-nvim-lsp'
 
+" Color Configuration
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+
 " NerdTree
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -75,6 +78,8 @@ Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'
 
 
+Plug 'sheerun/vim-polyglot'
+
 Plug 'neovim/nvim-lspconfig'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'MunifTanjim/prettier.nvim'
@@ -106,8 +111,15 @@ Plug 'natebosch/dartlang-snippets'
 
 call plug#end()
 
+    if exists('+termguicolors')
+      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+      set termguicolors
+    endif
+
+:colorscheme spaceduck
 :set background=dark
-:colorscheme gruvbox
+
 
 lua << EOF
   require("nvim-autopairs").setup {}
